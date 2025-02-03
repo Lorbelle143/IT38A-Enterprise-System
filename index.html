@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <ul>
+                <li><a href="#reports">Reports</a></li>
+                <li><a href="#accounts">Accounts</a>
+                    <ul class="submenu">
+                        <li><a href="#users">Users</a></li>
+                        <li><a href="#temp-users">Temp Users</a></li>
+                        <li><a href="#total-users">Total Number of Users</a></li> <!-- Added link -->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Reports Section -->
+            <section id="reports">
+                <h2>Reports</h2>
+                <p>Generate and view reports.</p>
+            </section>
+
+            <!-- Accounts Section -->
+            <section id="accounts">
+                <h2>Accounts</h2>
+                <p> accounts and settings .</p>
+                
+                <!-- Users Section -->
+                <section id="users">
+                    <h3>Users</h3>
+                    <p>dire ang users.</p>
+                </section>
+                
+                <!-- Temp Users Section -->
+                <section id="temp-users">
+                    <h3>Temp Users</h3>
+                    <p>Manage temporary users.</p>
+                </section>
+
+                <!-- Total Number of Users Section -->
+                <section id="total-users">
+                    <h3>Total Number of Users</h3>
+                    <p><strong>Total Users:</strong> 150</p> <!-- Displaying the total number of users -->
+                </section>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
