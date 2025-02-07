@@ -20,3 +20,42 @@ Target Canada attempted to implement SAP rapidly to meet an aggressive launch ti
 The failure of SAP implementation at Target Canada was caused by multiple factors. The system was rushed into operation before it was fully ready, and inadequate testing led to major functionality issues. Data migration errors resulted in incorrect inventory levels, causing stores to either overstock or run out of essential items. Additionally, the company underestimated the complexity of integrating SAP with its logistics network, leading to supply chain breakdowns.  
 c.4.outcomes & Consequences 
 The flawed implementation caused significant operational disruptions, with widespread inventory shortages and mismanagement. Customers frequently encountered empty shelves, while warehouses were overstocked with unnecessary products. These issues severely impacted sales and customer trust. The financial losses were substantial, ultimately contributing to Target Canada's decision to shut down its operations in Canada. The failure highlighted the importance of thorough system testing, realistic implementation timelines, and precise data migration.  
+
+d.Comparative Analysis
+
+| *Aspect*                          | *Nestlé (Case Study 1)*                           | *Target Canada (Case Study 2)*                       | *Similarity/Difference* |
+|--------------------------------------|--------------------------------------------------|------------------------------------------------------|---------------------------|
+| *Reason for Implementing SAP*      | Improve supply chain, production, and real-time data. | Enhance retail operations and inventory management.  | Similarity |
+| *Implementation Approach*         | Well-planned, phased rollout.                     | Rushed implementation with an aggressive timeline.  | Difference |
+| *Challenges*                      | Minimal challenges, smooth transition.           | Data migration errors and integration failures.     | Difference |
+| *Outcome and Impact*               | Successful, with increased efficiency and responsiveness. | Widespread operational disruptions, financial losses. | Difference |
+| *Post-Implementation Support*      | Continuous monitoring and vendor collaboration.  | Spent significant time and resources fixing system failures. | Difference |
+
+
+d.2. Critical Success vs. Failure Factors
+
+| *Critical Success Factors*              | *Critical Failure Factors*           |
+|-------------------------------------------|-----------------------------------------|
+| Clear objectives and strategic vision     | Lack of clear strategy and rushed execution |
+| Strong project management                 | Poor planning and weak execution         |
+| Close collaboration with vendors          | Insufficient vendor support post-launch  |
+| Employee involvement and extensive training | Inadequate training and user confusion   |
+| Proper system customization               | Poor customization and system misalignment |
+
+d.3. Key Takeaways & Lessons Learned
+
+1. What did the successful case do right 
+   Nestlé carefully planned each stage, engaged employees early, conducted extensive testing, and worked closely with the vendor to ensure the system met business needs.  
+
+2. What went wrong in the failed case  
+   Target Canada rushed the implementation, failed to conduct proper testing, encountered data migration issues, and underestimated the complexity of integrating SAP with its supply chain, leading to severe disruptions.  
+3. How can future implementations avoid similar failures 
+   Future enterprise system implementations should prioritize thorough planning, realistic timelines, extensive testing, proper data migration, employee training, and strong vendor support. 
+
+e. Insights & Recommendations
+e.1. Best Practices for Successful Enterprise System Implementation  
+For a successful enterprise system rollout, organizations should develop a clear implementation plan, involve employees early, and ensure the system is well-suited to their needs. Conducting thorough testing, providing comprehensive training, and managing data migration effectively are crucial steps. Additionally, securing ongoing vendor support and monitoring system performance post-launch can help maintain smooth operations.  
+e.2. Strategies to Avoid Failure
+To prevent failure, companies should set achievable timelines, avoid rushing the implementation, and allocate sufficient time for testing and training. Engaging key employees during development ensures the system aligns with business needs. Proper data validation and rigorous testing before deployment help avoid critical errors. Furthermore, companies should establish strong vendor partnerships for ongoing support.  
+e.3. Future Research Opportunities
+Future studies can explore ways to enhance enterprise system selection and implementation strategies, analyze emerging technologies that simplify integration, and investigate best practices for data migration. Research can also focus on measuring the long-term impact of ERP systems on business performance and identifying cost-effective solutions for small and medium-sized enterprises. Additionally, industry-specific ERP adoption challenges can be examined to develop tailored implementation approaches.
