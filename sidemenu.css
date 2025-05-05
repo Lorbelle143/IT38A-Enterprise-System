@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.menu-container {
+    width: 250px;
+    background-color: #13387c;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    color: white;
+}
+
+.menu-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    margin-right: 10px;
+}
+
+.welcome-text {
+    font-size: 14px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.menu-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-list button {
+    background: none;
+    border: none;
+    color: white;
+    text-align: left;
+    padding: 15px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.menu-list button:hover {
+    background: #0a234d;
+}
+
+.menu-list button:focus {
+    outline: none;
+}
