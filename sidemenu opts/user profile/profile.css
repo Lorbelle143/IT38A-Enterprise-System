@@ -1,0 +1,124 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fef7ec;
+}
+
+.profile-container {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    background-color: #fef7ec;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 20px;
+}
+
+.menu-btn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.profile-content {
+    text-align: center;
+}
+
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    background: #ddd;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+}
+
+.profile-content h1 {
+    margin: 10px 0 5px;
+}
+
+.profile-content p {
+    margin: 0;
+    color: gray;
+}
+
+.status-btn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.status-btn.active {
+    background-color: #000;
+    color: white;
+}
+
+.status-btn.inactive {
+    background-color: #ccc;
+    color: #333;
+}
+
+.profile-buttons {
+    margin: 20px 0;
+}
+
+.profile-buttons button {
+    margin: 5px;
+    padding: 8px 15px;
+    background-color: white;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.profile-buttons button:hover {
+    background-color: #ddd;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tab {
+    margin: 0 10px;
+    font-weight: bold;
+    cursor: pointer;
+    padding-bottom: 5px;
+}
+
+.tab.active {
+    border-bottom: 2px solid black;
+}
+
+.profile-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profile-form label {
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.profile-form input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
