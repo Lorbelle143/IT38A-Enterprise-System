@@ -91,51 +91,6 @@
       background-color: #0056b3;
     }
 
-    .create-work-order {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      margin: 20px;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .create-work-order input,
-    .create-work-order textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .create-work-order button {
-      padding: 10px 15px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      margin-right: 10px;
-      cursor: pointer;
-    }
-
-    .create-work-order button:hover {
-      background-color: #0056b3;
-    }
-
-    .cancel-btn {
-      background-color: #ccc;
-      color: black;
-    }
-
-    .cancel-btn:hover {
-      background-color: #999;
-    }
-
     .work-orders-list {
       display: none;
       padding: 15px;
@@ -202,7 +157,7 @@
 
     <div class="card">
       <h3>Create Work Orders</h3>
-      <button onclick="showWorkOrder()">➕ New Order</button>
+      <a href="create_work.php"><button>➕ New Order</button></a>
     </div>
 
     <div class="card" style="grid-column: 1 / -1;">
@@ -210,27 +165,6 @@
       <p>No reports available.</p>
     </div>
   </main>
-
-  <!-- Work Order Form (hidden initially) -->
-  <div id="create-work-order" class="create-work-order hidden">
-    <h3>Create New Work Order</h3>
-    <form>
-      <label>
-        Title:
-        <input type="text" placeholder="Enter title" required>
-      </label><br>
-      <label>
-        Description:
-        <textarea placeholder="Describe the task" required></textarea>
-      </label><br>
-      <label>
-        Due Date:
-        <input type="date" required>
-      </label><br>
-      <button type="submit">Submit</button>
-      <button type="button" class="cancel-btn" onclick="hideWorkOrder()">Cancel</button>
-    </form>
-  </div>
 
   <!-- Work Orders List (hidden initially) -->
   <div id="work-orders-list" class="work-orders-list">
@@ -243,16 +177,6 @@
   </div>
 
   <script>
-    function showWorkOrder() {
-      document.getElementById('create-work-order').classList.remove('hidden');
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
-
-    function hideWorkOrder() {
-      document.getElementById('create-work-order').classList.add('hidden');
-    }
-
-    // Function to show work orders
     function showWorkOrders() {
       const workOrdersList = document.getElementById('work-orders-list');
       workOrdersList.classList.toggle('hidden');
