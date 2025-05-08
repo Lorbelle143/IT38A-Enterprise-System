@@ -1,4 +1,11 @@
--- Users Table
+-- 1. Departments Table
+CREATE TABLE departments (
+    department_id INT AUTO_INCREMENT PRIMARY KEY,
+    department_name VARCHAR(100) NOT NULL,
+    description TEXT
+);
+
+-- 2. Users Table
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
@@ -10,14 +17,7 @@ CREATE TABLE users (
     FOREIGN KEY (department_id) REFERENCES departments(department_id)
 );
 
--- Departments Table
-CREATE TABLE departments (
-    department_id INT AUTO_INCREMENT PRIMARY KEY,
-    department_name VARCHAR(100) NOT NULL,
-    description TEXT
-);
-
--- Assets Table
+-- 3. Assets Table
 CREATE TABLE assets (
     asset_id INT AUTO_INCREMENT PRIMARY KEY,
     asset_name VARCHAR(100) NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE assets (
     status ENUM('active', 'inactive', 'under_maintenance') DEFAULT 'active'
 );
 
--- Work Orders Table
+-- 4. Work Orders Table
 CREATE TABLE work_orders (
     work_order_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(150) NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE work_orders (
     FOREIGN KEY (asset_id) REFERENCES assets(asset_id)
 );
 
--- Maintenance Logs Table
+-- 5. Maintenance Logs Table
 CREATE TABLE maintenance_logs (
     log_id INT AUTO_INCREMENT PRIMARY KEY,
     asset_id INT,
