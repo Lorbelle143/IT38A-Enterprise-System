@@ -7,72 +7,12 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      background-color: #fef6ec;
       margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: row;
-      height: 100vh;
-      background-color: #f9f9f9;
-    }
-
-    /* Sidebar Styles */
-    .sidebar {
-      width: 250px;
-      background-color: #007bff;
-      color: white;
-      position: fixed;
-      height: 100%;
-      top: 0;
-      left: -250px;
-      transition: 0.3s;
-      display: flex;
-      flex-direction: column;
-      padding-top: 20px;
-    }
-
-    .sidebar.open {
-      left: 0;
-    }
-
-    .sidebar h2 {
-      margin: 0;
-      font-size: 24px;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    .sidebar a {
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-      margin-bottom: 15px;
-      padding-left: 20px;
-      transition: 0.3s;
-    }
-
-    .sidebar a:hover {
-      color: #ddd;
-    }
-
-    .hamburger-menu {
-      font-size: 30px;
-      cursor: pointer;
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 1000;
-    }
-
-    /* Main Content Styles */
-    .main-content {
-      margin-left: 0;
-      padding: 20px;
-      width: 100%;
-      transition: margin-left 0.3s;
     }
 
     .header {
-      background-color: #007bff;
+      background-color: #cce5ff;
       padding: 10px 20px;
       display: flex;
       align-items: center;
@@ -82,7 +22,6 @@
 
     .header h2 {
       margin: 0;
-      color: white;
     }
 
     .header .user-icon {
@@ -91,7 +30,7 @@
     }
 
     .search-bar {
-      margin: 20px 0;
+      margin: 20px;
       display: flex;
       justify-content: center;
     }
@@ -219,120 +158,91 @@
 </head>
 <body>
 
-  <!-- Hamburger Menu Icon -->
-  <div class="hamburger-menu" onclick="toggleSidebar()">☰</div>
-
-  <!-- Sidebar -->
-  <div id="sidebar" class="sidebar">
-    <h2>Dashboard</h2>
-    <a href="profile.php">Profile</a>
-    <!-- Removed the Work Orders link -->
-    <a href="tasks.php">Tasks</a>
-    <a href="reports.php">Reports</a>
-    <a href="settings.php">Settings</a>
-    <a href="logout.php">Logout</a>
+  <div class="header">
+    <h2>DASHBOARD</h2>
+    <div class="user-icon">👤</div>
   </div>
 
-  <!-- Main Content -->
-  <div class="main-content">
+  <div class="search-bar">
+    <input type="text" placeholder="Search...">
+  </div>
 
-    <!-- Header -->
-    <div class="header">
-      <h2>Welcome to the Dashboard</h2>
-      <div class="user-icon">👤</div>
-    </div>
-
-    <!-- Search Bar -->
-    <div class="search-bar">
-      <input type="text" placeholder="Search...">
-    </div>
-
-    <!-- Main Dashboard Content -->
-    <div class="content">
-      <div class="card">
-        <h3>Dashboard</h3>
-        <ul class="task-list">
-          <li>Work order overview</li>
-          <li>Assign Task</li>
-          <li>Task Status</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Work Orders</h3>
-        <ul class="work-list">
-          <li><button onclick="showWorkOrders()">Show Work Orders</button></li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Pending Task</h3>
-        <ul class="task-list">
-          <li>Fix server issue</li>
-          <li>Review report</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Completed Task</h3>
-        <ul class="task-list">
-          <li><input type="checkbox" class="checkbox" checked>Backup done</li>
-          <li><input type="checkbox" class="checkbox" checked>System updated</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Create Work Orders</h3>
-        <button onclick="showWorkOrder()">➕ New Order</button>
-      </div>
-
-      <div class="card" style="grid-column: 1 / -1;">
-        <h3>Reports</h3>
-        <p>No reports available.</p>
-      </div>
-    </div>
-
-    <!-- Work Order Form (hidden initially) -->
-    <div id="create-work-order" class="create-work-order hidden">
-      <h3>Create New Work Order</h3>
-      <form>
-        <label>
-          Title:
-          <input type="text" placeholder="Enter title" required>
-        </label><br>
-        <label>
-          Description:
-          <textarea placeholder="Describe the task" required></textarea>
-        </label><br>
-        <label>
-          Due Date:
-          <input type="date" required>
-        </label><br>
-        <button type="submit">Submit</button>
-        <button type="button" class="cancel-btn" onclick="hideWorkOrder()">Cancel</button>
-      </form>
-    </div>
-
-    <!-- Work Orders List (hidden initially) -->
-    <div id="work-orders-list" class="work-orders-list">
-      <h3>Work Orders List</h3>
-      <ul>
-        <li>Work Order #1: Fix server issue</li>
-        <li>Work Order #2: Update software</li>
-        <li>Work Order #3: Backup system</li>
+  <main class="content">
+    <div class="card">
+      <h3>Dashboard</h3>
+      <ul class="task-list">
+        <li>Work order overview</li>
+        <li>Assign Task</li>
+        <li>Task Status</li>
       </ul>
     </div>
 
+    <div class="card">
+      <h3>Work Orders</h3>
+      <ul class="work-list">
+        <li><button onclick="showWorkOrders()">Show Work Orders</button></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Pending Task</h3>
+      <ul class="task-list">
+        <li>Fix server issue</li>
+        <li>Review report</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Completed Task</h3>
+      <ul class="task-list">
+        <li><input type="checkbox" class="checkbox" checked>Backup done</li>
+        <li><input type="checkbox" class="checkbox" checked>System updated</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Create Work Orders</h3>
+      <button onclick="showWorkOrder()">➕ New Order</button>
+    </div>
+
+    <div class="card" style="grid-column: 1 / -1;">
+      <h3>Reports</h3>
+      <p>No reports available.</p>
+    </div>
+  </main>
+
+  <!-- Work Order Form (hidden initially) -->
+  <div id="create-work-order" class="create-work-order hidden">
+    <h3>Create New Work Order</h3>
+    <form>
+      <label>
+        Title:
+        <input type="text" placeholder="Enter title" required>
+      </label><br>
+      <label>
+        Description:
+        <textarea placeholder="Describe the task" required></textarea>
+      </label><br>
+      <label>
+        Due Date:
+        <input type="date" required>
+      </label><br>
+      <button type="submit">Submit</button>
+      <button type="button" class="cancel-btn" onclick="hideWorkOrder()">Cancel</button>
+    </form>
+  </div>
+
+  <!-- Work Orders List (hidden initially) -->
+  <div id="work-orders-list" class="work-orders-list">
+    <h3>Work Orders List</h3>
+    <ul>
+      <li>Work Order #1: Fix server issue</li>
+      <li>Work Order #2: Update software</li>
+      <li>Work Order #3: Backup system</li>
+    </ul>
   </div>
 
   <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      const mainContent = document.querySelector('.main-content');
-      sidebar.classList.toggle('open');
-      mainContent.style.marginLeft = sidebar.classList.contains('open') ? '250px' : '0';
-    }
-
     function showWorkOrder() {
       document.getElementById('create-work-order').classList.remove('hidden');
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
