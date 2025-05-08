@@ -1,4 +1,46 @@
-<?php session_start(); ?>
+<?php
+// Start the session
+session_start();
+
+// Load tasks from the tasks.json file
+$tasksFile = 'tasks.json';
+if (file_exists($tasksFile)) {
+    $tasksData = json_decode(file_get_contents($tasksFile), true);
+} else {
+    // Initialize an empty task array if no file exists
+    $tasksData = ['pending' => [], 'completed' => []];
+}
+
+// Handle marking a task as completed
+if (isset($_POST['task_id']) && isset($_POST['action']) && $_POST['action'] == 'complete') {
+    $taskId = $_POST['task_id'];
+    // Mark the task as completed
+    $taskKey = array_search($taskId, array_column($tasksData['pending'], 'id'));
+    if ($taskKey !== false) {
+        $task = $tasksData['pending'][$taskKey];
+        unset($tasksData['pending'][$taskKey]);
+        $tasksData['completed'][] = $task;
+    }
+    // Save the updated tasks data back to the file
+    file_put_contents($tasksFile, json_encode($tasksData));
+    header("Location: dashboard.php");
+    exit;
+}
+
+// Handle adding a new task
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['new_task'])) {
+    $newTask = [
+        'id' => uniqid(),
+        'task' => $_POST['new_task'],
+        'created_at' => date('Y-m-d H:i:s'),
+    ];
+    $tasksData['pending'][] = $newTask;
+    file_put_contents($tasksFile, json_encode($tasksData));
+    header("Location: dashboard.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,23 +177,32 @@
     <div class="card">
       <h3>Work Orders</h3>
       <ul class="work-list">
-        <li><button onclick="showWorkOrders()">Show Work Orders</button></li>
+        <li><a href="show_work_orders.php"><button>Show Work Orders</button></a></li>
       </ul>
     </div>
 
     <div class="card">
-      <h3>Pending Task</h3>
+      <h3>Pending Tasks</h3>
       <ul class="task-list">
-        <li>Fix server issue</li>
-        <li>Review report</li>
+        <?php foreach ($tasksData['pending'] as $task): ?>
+          <li>
+            <form method="POST" style="display:inline;">
+              <input type="hidden" name="task_id" value="<?php echo $task['id']; ?>">
+              <input type="hidden" name="action" value="complete">
+              <button type="submit">✔ Complete</button>
+            </form>
+            <?php echo htmlspecialchars($task['task']); ?>
+          </li>
+        <?php endforeach; ?>
       </ul>
     </div>
 
     <div class="card">
-      <h3>Completed Task</h3>
+      <h3>Completed Tasks</h3>
       <ul class="task-list">
-        <li><input type="checkbox" class="checkbox" checked>Backup done</li>
-        <li><input type="checkbox" class="checkbox" checked>System updated</li>
+        <?php foreach ($tasksData['completed'] as $task): ?>
+          <li><?php echo htmlspecialchars($task['task']); ?></li>
+        <?php endforeach; ?>
       </ul>
     </div>
 
@@ -165,23 +216,6 @@
       <p>No reports available.</p>
     </div>
   </main>
-
-  <!-- Work Orders List (hidden initially) -->
-  <div id="work-orders-list" class="work-orders-list">
-    <h3>Work Orders List</h3>
-    <ul>
-      <li>Work Order #1: Fix server issue</li>
-      <li>Work Order #2: Update software</li>
-      <li>Work Order #3: Backup system</li>
-    </ul>
-  </div>
-
-  <script>
-    function showWorkOrders() {
-      const workOrdersList = document.getElementById('work-orders-list');
-      workOrdersList.classList.toggle('hidden');
-    }
-  </script>
 
 </body>
 </html>
