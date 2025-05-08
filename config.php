@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';                // XAMPP default MySQL host
-$db   = 'IT38A-enterprise-system';   // Your database name
+$db   = 'IT38a-enterprise-system';   // Your database name
 $user = 'root';                     // XAMPP default MySQL username
 $pass = '';                         // XAMPP default MySQL password (empty by default)
 $charset = 'utf8mb4';               // Character set
