@@ -1,119 +1,263 @@
-<?php
-// login.php
-session_start();
-$error = '';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Dummy credentials for example
-    $valid_username = 'johndoe';
-    $valid_password = 'password123';
-
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
-
-    if ($username === $valid_username && $password === $valid_password) {
-        // On success, set session and redirect to dashboard or profile
-        $_SESSION['username'] = $username;
-        header('Location: dashboard.php');
-        exit;
-    } else {
-        $error = 'Invalid username or password.';
-    }
-}
-?>
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
+  <title>Dashboard</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
+      background-color: #fef6ec;
+      margin: 0;
+    }
+
+    .header {
+      background-color: #cce5ff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #aaa;
+    }
+
+    .header h2 {
+      margin: 0;
+    }
+
+    .header .user-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .search-bar {
+      margin: 20px;
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
     }
-    .login-container {
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+    .search-bar input {
+      padding: 10px;
+      border-radius: 15px;
+      border: 1px solid #ccc;
       width: 300px;
     }
-    .login-container h2 {
+
+    .content {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
       margin-top: 0;
-      text-align: center;
+      margin-bottom: 10px;
     }
-    .login-container label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
+
+    .task-list, .work-list {
+      list-style: none;
+      padding-left: 0;
     }
-    .login-container input {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+
+    .task-list li, .work-list li {
+      margin: 5px 0;
+      padding-left: 10px;
+      border-left: 3px solid #ccc;
     }
-    .login-container button {
-      width: 100%;
+
+    .checkbox {
+      margin-right: 5px;
+    }
+
+    .card button {
       padding: 10px;
-      margin-top: 20px;
       background-color: #007bff;
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 5px;
       cursor: pointer;
-      font-size: 16px;
+      width: 100%;
+      margin-top: 10px;
     }
-    .login-container button:hover {
+
+    .card button:hover {
       background-color: #0056b3;
     }
-    .signup-prompt {
-      text-align: center;
-      margin-top: 15px;
-      font-size: 14px;
+
+    .create-work-order {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin: 20px;
     }
-    .signup-prompt a {
-      color: #007bff;
-      text-decoration: none;
-      font-weight: bold;
+
+    .hidden {
+      display: none;
     }
-    .signup-prompt a:hover {
-      text-decoration: underline;
+
+    .create-work-order input,
+    .create-work-order textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
-    .error {
-      color: red;
-      text-align: center;
-      margin-top: 10px;
+
+    .create-work-order button {
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .create-work-order button:hover {
+      background-color: #0056b3;
+    }
+
+    .cancel-btn {
+      background-color: #ccc;
+      color: black;
+    }
+
+    .cancel-btn:hover {
+      background-color: #999;
+    }
+
+    .work-orders-list {
+      display: none;
+      padding: 15px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+
+    .work-orders-list ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .work-orders-list li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
     }
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <h2>Login</h2>
 
-    <?php if ($error): ?>
-      <div class="error"><?= htmlspecialchars($error) ?></div>
-    <?php endif; ?>
-
-    <form method="POST" action="">
-      <label for="username">Username</label>
-      <input type="text" id="username" name="username" required />
-
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required />
-
-      <button type="submit">Log In</button>
-    </form>
-
-    <div class="signup-prompt">
-      Don’t have an account? <a href="register.php">Sign up here</a>
-    </div>
+  <div class="header">
+    <h2>DASHBOARD</h2>
+    <div class="user-icon">👤</div>
   </div>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Search...">
+  </div>
+
+  <main class="content">
+    <div class="card">
+      <h3>Dashboard</h3>
+      <ul class="task-list">
+        <li>Work order overview</li>
+        <li>Assign Task</li>
+        <li>Task Status</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Work Orders</h3>
+      <ul class="work-list">
+        <li><button onclick="showWorkOrders()">Show Work Orders</button></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Pending Task</h3>
+      <ul class="task-list">
+        <li>Fix server issue</li>
+        <li>Review report</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Completed Task</h3>
+      <ul class="task-list">
+        <li><input type="checkbox" class="checkbox" checked>Backup done</li>
+        <li><input type="checkbox" class="checkbox" checked>System updated</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Create Work Orders</h3>
+      <button onclick="showWorkOrder()">➕ New Order</button>
+    </div>
+
+    <div class="card" style="grid-column: 1 / -1;">
+      <h3>Reports</h3>
+      <p>No reports available.</p>
+    </div>
+  </main>
+
+  <!-- Work Order Form (hidden initially) -->
+  <div id="create-work-order" class="create-work-order hidden">
+    <h3>Create New Work Order</h3>
+    <form>
+      <label>
+        Title:
+        <input type="text" placeholder="Enter title" required>
+      </label><br>
+      <label>
+        Description:
+        <textarea placeholder="Describe the task" required></textarea>
+      </label><br>
+      <label>
+        Due Date:
+        <input type="date" required>
+      </label><br>
+      <button type="submit">Submit</button>
+      <button type="button" class="cancel-btn" onclick="hideWorkOrder()">Cancel</button>
+    </form>
+  </div>
+
+  <!-- Work Orders List (hidden initially) -->
+  <div id="work-orders-list" class="work-orders-list">
+    <h3>Work Orders List</h3>
+    <ul>
+      <li>Work Order #1: Fix server issue</li>
+      <li>Work Order #2: Update software</li>
+      <li>Work Order #3: Backup system</li>
+    </ul>
+  </div>
+
+  <script>
+    function showWorkOrder() {
+      document.getElementById('create-work-order').classList.remove('hidden');
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    function hideWorkOrder() {
+      document.getElementById('create-work-order').classList.add('hidden');
+    }
+
+    // Function to show work orders
+    function showWorkOrders() {
+      const workOrdersList = document.getElementById('work-orders-list');
+      workOrdersList.classList.toggle('hidden');
+    }
+  </script>
+
 </body>
 </html>
